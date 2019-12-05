@@ -7,6 +7,12 @@
     "build": "NODE_ENV='production' webpack",
     "start": "webpack-dev-server"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tahoeRobbo/reacker-news.git"
