@@ -32,7 +32,7 @@ export function fetchInitialPosts () {
 
       return ids.slice(0, 50)
   }).then((ids) => Promise.all(ids.map(fetchItem)))
-    .then((items) =>  {let posts = removeDeleted(onlyPosts(removeDead(items))); console.log('posts', posts)})
+    .then((items) =>  removeDeleted(onlyPosts(removeDead(items))))
 }
 
 export function fetchComments (ids) {
