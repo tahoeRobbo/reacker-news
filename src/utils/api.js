@@ -23,7 +23,7 @@ function onlyComments (posts) {
 }
 
 export function fetchInitialPosts () {
-  return fetch(`${url}/newstories${json}`)
+  return fetch(`${url}/topstories${json}`)
     .then((res) => res.json())
     .then((ids) =>{
       if (!ids) {

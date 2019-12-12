@@ -2,6 +2,7 @@ import React from 'react'
 import { fetchInitialPosts } from '../utils/api'
 
 import Loading from './Loading'
+import Post from './Post'
 
 const initialState = {
   posts: null,
@@ -56,7 +57,7 @@ const [ state, dispatch ] = React.useReducer(
       <ul>
         {state.posts && state.posts.map((post) => (
           <li key={post.id}>
-            {JSON.stringify(post)}
+            <Post post={post} />
           </li>
         ))}
       </ul>
