@@ -55,14 +55,11 @@ const [ state, dispatch ] = React.useReducer(
   return (
     <>
       <ul>
-        {/*{state.posts && state.posts.map((post) => (*/}
-        {/*  <li key={post.id}>*/}
-        {/*    {JSON.stringify(post)}*/}
-        {/*  </li>*/}
-        <li key='unique'>
-          {state.posts && <Post post={state.posts[0]} />}
-        </li>
-        {/*))}*/}
+        {state.posts && state.posts.map((post) => (
+          <li key={post.id}>
+            <Post post={post} />
+          </li>
+        ))}
       </ul>
     </>
   )
