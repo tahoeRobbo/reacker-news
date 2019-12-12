@@ -6,8 +6,6 @@ import PostInfo from './PostInfo'
 
 
 const Post = ({ post }) => {
-  console.log('props', post)
-
  return (
   <>
     <Title url={post.url} title={post.title} />
