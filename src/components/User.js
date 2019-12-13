@@ -94,8 +94,8 @@ function User ({ location }) {
               <div>
                 <span>Joined: {formatDateTimeMMDDYY(user.created)}, </span>
                 <span>has {user.karma} karma</span>
-                <p dangerouslySetInnerHTML={{__html: user.about}} />
               </div>
+              <p dangerouslySetInnerHTML={{__html: user.about}} />
             </div>
           </>}
       {loadingPosts
@@ -103,8 +103,8 @@ function User ({ location }) {
         : posts.length === 0
           ? <p>This user has not made any recent posts.</p>
           : <>
-            <h2>Most Recent Posts</h2>
-            <PostsGrid posts={posts} />
+              <h2>Most Recent Posts</h2>
+              <PostsGrid posts={posts} />
             </>}
     </>
   )
