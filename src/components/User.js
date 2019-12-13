@@ -2,15 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 
-import { fetchUser } from '../utils/api'
+import { fetchUser, fetchPosts, onlyPosts } from '../utils/api'
 import { formatDateTimeMMDDYY } from '../utils/helpers'
 
 import Loading from './Loading'
+import PostsGrid from './PostsGrid'
 
 function getInitialState () {
   return {
-    loadingComments: true,
-    comments: null,
+    loadingPosts: false,
+    posts: [],
     loadingUser: true,
     user: null,
     error: null
@@ -24,10 +25,10 @@ function userReducer (state, action) {
       ...state,
       loadingUser: true
     }
-  } else if (type === 'fetching_comments') {
+  } else if (type === 'fetching_posts') {
     return {
       ...state,
-      loadingComments: true
+      loadingPosts: true
     }
   } else if (type === 'success_user') {
     return {
@@ -35,18 +36,18 @@ function userReducer (state, action) {
       user: action.user,
       loadingUser: false
     }
-  } else if (type === 'success_comments') {
+  } else if (type === 'success_posts') {
     return {
       ...state,
-      comments: action.comments,
-      loadingComments: false
+      posts: state.posts.concat(action.posts),
+      loadingPosts: false
     }
   } else if (type === 'failure') {
     return {
       ...state,
       error: action.error,
       loadingUser: false,
-      loadingComments: false
+      loadingPosts: false
     }
   } else {
     throw new Error('That action type is not supported')
@@ -59,17 +60,21 @@ function User ({ location }) {
     userReducer,
     getInitialState()
   )
-  const { comments, loadingComments, loadingUser, user, error } = state
+  const { posts, loadingPosts, loadingUser, user, error } = state
 
   console.log(user)
 
   React.useEffect(() => {
     dispatch({ type: 'fetching_user' })
-    dispatch({ type: 'fetching_comments' })
 
     fetchUser(id)
       .then((user) => {
         dispatch({ type: 'success_user', user })
+        dispatch({ type: 'fetching_posts' })
+        fetchPosts(user.submitted.slice(0, 100))
+          .then((posts) => {
+            dispatch({ type: 'success_posts', posts })
+        })
       })
       .catch((error) => {
         dispatch({ type: 'failure', error})
@@ -91,17 +96,15 @@ function User ({ location }) {
                 <span>has {user.karma} karma</span>
               </div>
             </div>
-          </>
-      }
-      {loadingComments
-        ? <Loading text='Loading Comments' />
-        : (
-          <div className='comments-container'>
-            comments go here
-          </div>
-        )
-      }
->
+          </>}
+      {loadingPosts
+        ? <Loading text='Loading Posts' />
+        : posts.length === 0
+          ? <p>This user has not made any posts.</p>
+          : <>
+            <h2>Most Recent Posts</h2>
+            <PostsGrid posts={posts} />
+            </>}
     </>
   )
 }
