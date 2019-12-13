@@ -94,6 +94,7 @@ function User ({ location }) {
               <div>
                 <span>Joined: {formatDateTimeMMDDYY(user.created)}, </span>
                 <span>has {user.karma} karma</span>
+                <p dangerouslySetInnerHTML={{__html: user.about}}></p>
               </div>
             </div>
           </>}
