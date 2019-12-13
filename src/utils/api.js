@@ -22,8 +22,8 @@ function onlyComments (posts) {
   return posts.filter(({ type }) => type === 'comment')
 }
 
-export function fetchInitialPosts () {
-  return fetch(`${url}/topstories${json}`)
+export function fetchInitialPosts (type) {
+  return fetch(`${url}/${type}stories${json}`)
     .then((res) => res.json())
     .then((ids) =>{
       if (!ids) {
