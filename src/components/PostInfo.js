@@ -1,18 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-import { formatDateTime } from '../utils/helpers'
+import { formatDateTimeFrom } from '../utils/helpers'
 
-const PostInfo = ({ author, kids = [], score = 0, time }) => {
+const PostInfo = ({ by, kids = [], score = 0, time }) => {
  return (
   <div>
-    {score} points by {author} {formatDateTime(time)} ({kids.length} comments)
+    <span>{score} points </span>
+    <span>by <Link to={`/user?id=${by}`}>{by}</Link></span>
+    <span> {formatDateTimeFrom(time)} ({kids.length} comments)</span>
   </div>
  )
 }
 
 PostInfo.propTypes = {
-  author: PropTypes.string.isRequired,
+  by: PropTypes.string.isRequired,
   kids: PropTypes.array,
   score: PropTypes.number,
   time: PropTypes.number.isRequired

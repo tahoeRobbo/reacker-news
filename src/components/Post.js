@@ -9,7 +9,7 @@ const Post = ({ post }) => {
  return (
   <>
     <Title url={post.url} title={post.title} />
-    <PostInfo author={post.by} kids={post.kids} time={post.time} score={post.score} />
+    <PostInfo by={post.by} kids={post.kids} time={post.time} score={post.score} />
   </>
  )
 }
