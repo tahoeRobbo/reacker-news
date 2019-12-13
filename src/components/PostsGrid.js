@@ -1,61 +1,13 @@
 import React from 'react'
-import { fetchInitialPosts } from '../utils/api'
+import PropTypes from 'prop-types'
 
-import Loading from './Loading'
 import Post from './Post'
 
-const initialState = {
-  posts: null,
-  loading: false,
-  error: null
-}
-
-function postsGridReducer (state, action) {
-  switch (action.type) {
-    case 'fetch':
-      return {
-        ...state,
-        loading: true
-      }
-    case 'success':
-      return {
-        posts: action.posts,
-        loading: false,
-        error: null
-      }
-    case 'failure':
-      return {
-        ...state,
-        loading: false,
-        error: action.error
-      }
-  }
-}
-
-export default function PostsGrid () {
-const [ state, dispatch ] = React.useReducer(
-    postsGridReducer,
-    initialState
-)
-
-  React.useEffect(() => {
-    dispatch({ type: 'fetch' })
-
-      fetchInitialPosts()
-        .then((posts) => {
-          dispatch({ type: 'success', posts})
-        })
-        .catch((error) => dispatch({ type: 'failure', error }))
-  }, [])
-
-  if (state.loading) {
-    return <Loading text='Loading Posts' speed={100}/>
-  }
-
+export default function PostsGrid ({ posts }) {
   return (
     <>
       <ul>
-        {state.posts && state.posts.map((post) => (
+        {posts.map((post) => (
           <li key={post.id}>
             <Post post={post} />
           </li>
@@ -63,4 +15,8 @@ const [ state, dispatch ] = React.useReducer(
       </ul>
     </>
   )
+}
+
+PostsGrid.propTypes = {
+  posts: PropTypes.array.isRequired
 }
