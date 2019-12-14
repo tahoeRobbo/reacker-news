@@ -14,7 +14,7 @@ function removeDead (posts) {
   return posts.filter(({ dead }) => dead !== true)
 }
 
-function onlyPosts (posts) {
+export function onlyPosts (posts) {
   return posts.filter(({ type }) => type === 'story')
 }
 
