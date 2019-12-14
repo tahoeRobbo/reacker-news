@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 
 import { formatDateTimeFrom } from '../utils/helpers'
 
+<<<<<<< Updated upstream
 const PostInfo = ({ by, kids = [], score = 0, time }) => {
+=======
+const PostInfo = ({ author, kids = [], score = 0, time, decendents = 0}) => {
+>>>>>>> Stashed changes
  return (
   <div>
     <span>{score} points </span>
@@ -15,7 +19,12 @@ const PostInfo = ({ by, kids = [], score = 0, time }) => {
 }
 
 PostInfo.propTypes = {
+<<<<<<< Updated upstream
   by: PropTypes.string.isRequired,
+=======
+  author: PropTypes.string.isRequired,
+  decendents: PropTypes.number,
+>>>>>>> Stashed changes
   kids: PropTypes.array,
   score: PropTypes.number,
   time: PropTypes.number.isRequired

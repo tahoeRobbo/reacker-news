@@ -1,10 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Title = ({ title, url }) => {
+import { Link } from 'react-router-dom'
+
+const Title = ({ title, url, id }) => {
  return (
   <>
-    <a href={url}>{title}</a>
+    { url
+      ? <a href={url}>{title}</a>
+      : <Link to={`/post/${id}`} />
+    }
+
   </>
  )
 }
