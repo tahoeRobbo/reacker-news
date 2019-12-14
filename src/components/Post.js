@@ -9,13 +9,18 @@ const Post = ({ post }) => {
   // console.log('post.id', post.kids[0])
   return (
     <>
-      <Title url={post.url} title={post.title} />
+      <Title
+        url={post.url}
+        title={post.title}
+        id={post.id}
+      />
       <PostInfo
         by={post.by}
         descendents={post.descendents}
         kids={post.kids}
         time={post.time}
-        score={post.score} />
+        score={post.score}
+      />
   </>
   )
 }

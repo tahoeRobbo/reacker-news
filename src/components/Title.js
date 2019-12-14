@@ -8,7 +8,7 @@ const Title = ({ title, url, id }) => {
   <>
     { url
       ? <a href={url}>{title}</a>
-      : <Link to={`/post/${id}`} />
+      : <Link to={`/post?id=${id}`} >XXXXXXXXXXX{title}</Link>
     }
 
   </>
@@ -17,7 +17,8 @@ const Title = ({ title, url, id }) => {
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,
-  url: PropTypes.string
+  url: PropTypes.string,
+  id: PropTypes.number.isRequired
 }
 
 export default Title
