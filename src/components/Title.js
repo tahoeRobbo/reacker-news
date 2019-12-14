@@ -17,7 +17,7 @@ const Title = ({ title, url, id }) => {
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string
 }
 
 export default Title
