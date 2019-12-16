@@ -6,7 +6,7 @@ import PostInfo from './PostInfo'
 
 
 const Post = ({ post }) => {
-  // console.log('post.id', post.kids[0])
+// console.log('post', post)
   return (
     <>
       <Title
@@ -16,8 +16,9 @@ const Post = ({ post }) => {
       />
       <PostInfo
         by={post.by}
-        descendents={post.descendents}
+        descendants={post.descendants}
         kids={post.kids}
+        id={post.id}
         time={post.time}
         score={post.score}
       />

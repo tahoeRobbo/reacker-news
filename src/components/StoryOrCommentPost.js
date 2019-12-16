@@ -76,9 +76,10 @@ function StoryOrCommentPost ({ location }) {
         dispatch({ type: 'failure', error })
     })
   }, [id])
-
+  
   console.log('post', post)
-  console.log('comments', comments)
+console.log('comments', comments)
+  
   return (
     <div>
       {id}
