@@ -74,17 +74,16 @@ function StoryOrCommentPost ({ location }) {
         fetchComments(post.kids)
           .then((comments) => {
             dispatch({ type: 'success_comments', comments })
-        })
-    })
+          })
+      })
       .catch((error) => {
         dispatch({ type: 'failure', error })
-    })
+      })
   }, [id])
 
-  console.log('post', post)
-console.log('comments', comments)
-
-
+  if (error) {
+    return <p>{error.message}</p>
+  }
 
   return (
     <div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { formatDateTimeFrom } from '../utils/helpers'
 
-function Comment ({ by, id, time, text }) {
+function Comment ({ by, time, text }) {
   return (
     <div>
       <div>{by} {formatDateTimeFrom(time)}</div>
@@ -14,7 +14,6 @@ function Comment ({ by, id, time, text }) {
 
 Comment.propTypes = {
   by: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
   time: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired
 }
