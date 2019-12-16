@@ -3,6 +3,10 @@ import queryString from 'query-string'
 
 import { fetchPosts, fetchComments } from '../utils/api'
 
+import Comment from './Comment'
+import Post from './Post'
+import Loading from './Loading'
+
 function getSOCInitialState () {
   return {
     loadingPost: true,
@@ -47,7 +51,7 @@ function sOCPostReducer (state, action) {
       loadingPost: false
     }
   } else {
-    throw new Error ('that action is not supported')
+    throw new Error('that action is not supported')
   }
 }
 
@@ -76,13 +80,24 @@ function StoryOrCommentPost ({ location }) {
         dispatch({ type: 'failure', error })
     })
   }, [id])
-  
+
   console.log('post', post)
 console.log('comments', comments)
-  
+
+
+
   return (
     <div>
-      {id}
+      {loadingPost
+        ? <Loading text='Loading Post' />
+        : <Post post={post} />}
+      {loadingComments
+        ? <Loading text='Loading Comments' />
+        : comments.length
+          ? comments.map((comment) => (
+            <Comment text={comment.text} time={comment.time} by={comment.by} id={comment.id} key={comment.id} />
+          ))
+          : <p>There are no comments for this story. </p>}
     </div>
   )
 }
