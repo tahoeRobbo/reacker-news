@@ -81,6 +81,8 @@ function StoryOrCommentPost ({ location }) {
       })
   }, [id])
 
+  console.log('post', post)
+
   if (error) {
     return <p>{error.message}</p>
   }
@@ -89,7 +91,10 @@ function StoryOrCommentPost ({ location }) {
     <div>
       {loadingPost
         ? <Loading text='Loading Post' />
-        : <Post post={post} />}
+        : <>
+            <Post post={post} showText />
+            <p dangerouslySetInnerHTML={{ __html: post.text }} />
+          </>}
       {loadingComments
         ? <Loading text='Loading Comments' />
         : comments.length

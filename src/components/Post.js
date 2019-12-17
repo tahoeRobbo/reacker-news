@@ -6,7 +6,7 @@ import PostInfo from './PostInfo'
 
 
 const Post = ({ post }) => {
-// console.log('post', post)
+  console.log('post inside Post', post)
   return (
     <>
       <Title
