@@ -4,6 +4,14 @@ import queryString from 'query-string'
 
 import { fetchUser, fetchPosts, onlyPosts } from '../utils/api'
 import { formatDateTimeMMDDYY } from '../utils/helpers'
+import {
+  ACTION_TYPE_ERROR,
+  FAILURE,
+  FETCHING_POSTS,
+  FETCHING_USER,
+  SUCCESS_POSTS,
+  SUCCESS_USER
+} from '../utils/constants'
 
 import Loading from './Loading'
 import PostsGrid from './PostsGrid'
@@ -20,29 +28,29 @@ function getInitialState () {
 
 function userReducer (state, action) {
   const { type } = action
-  if (type === 'fetching_user') {
+  if (type === FETCHING_USER) {
     return {
       ...state,
       loadingUser: true
     }
-  } else if (type === 'fetching_posts') {
+  } else if (type === FETCHING_POSTS) {
     return {
       ...state,
       loadingPosts: true
     }
-  } else if (type === 'success_user') {
+  } else if (type === SUCCESS_USER) {
     return {
       ...state,
       user: action.user,
       loadingUser: false
     }
-  } else if (type === 'success_posts') {
+  } else if (type === SUCCESS_POSTS) {
     return {
       ...state,
       posts: state.posts.concat(action.posts),
       loadingPosts: false
     }
-  } else if (type === 'failure') {
+  } else if (type === FAILURE) {
     return {
       ...state,
       error: action.error,
@@ -50,7 +58,7 @@ function userReducer (state, action) {
       loadingPosts: false
     }
   } else {
-    throw new Error('That action type is not supported')
+    throw new Error(ACTION_TYPE_ERROR)
   }
 }
 
@@ -65,19 +73,19 @@ function User ({ location }) {
   console.log(user)
 
   React.useEffect(() => {
-    dispatch({ type: 'fetching_user' })
+    dispatch({ type: FETCHING_USER })
 
     fetchUser(id)
       .then((user) => {
-        dispatch({ type: 'success_user', user })
-        dispatch({ type: 'fetching_posts' })
+        dispatch({ type: SUCCESS_USER, user })
+        dispatch({ type: FETCHING_POSTS })
         fetchPosts(user.submitted.slice(0, 100))
           .then((posts) => {
-            dispatch({ type: 'success_posts', posts })
+            dispatch({ type: SUCCESS_POSTS, posts })
         })
       })
       .catch((error) => {
-        dispatch({ type: 'failure', error})
+        dispatch({ type: FAILURE, error})
       })
   }, [id])
 
