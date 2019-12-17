@@ -11,6 +11,7 @@ import {
 
 import PostsGrid from './PostsGrid'
 import Loading from './Loading'
+import Error from './Error'
 
 function mainPostsReducer (state, action) {
   if (action.type === FETCHING_POSTS) {
@@ -66,7 +67,7 @@ function MainPostsGridWrapper ({ type }) {
   }
 
   if (error) {
-    return <p>{error.message}</p>
+    return <Error message={error.message} />
   }
 
   return <PostsGrid posts={posts} />

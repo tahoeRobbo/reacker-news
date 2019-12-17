@@ -14,6 +14,7 @@ import {
 import Comment from './Comment'
 import Post from './Post'
 import Loading from './Loading'
+import Error from './Error'
 
 function getSOCInitialState () {
   return {
@@ -92,7 +93,7 @@ function StoryOrCommentPost ({ location }) {
   console.log('post', post)
 
   if (error) {
-    return <p>{error.message}</p>
+    return <Error message={error.message} />
   }
 
   return (

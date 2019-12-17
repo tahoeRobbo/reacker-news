@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 
-import { fetchUser, fetchPosts, onlyPosts } from '../utils/api'
+import { fetchUser, fetchPosts } from '../utils/api'
 import { formatDateTimeMMDDYY } from '../utils/helpers'
 import {
   ACTION_TYPE_ERROR,
@@ -15,6 +15,7 @@ import {
 
 import Loading from './Loading'
 import PostsGrid from './PostsGrid'
+import Error from './Error'
 
 function getInitialState () {
   return {
@@ -90,7 +91,7 @@ function User ({ location }) {
   }, [id])
 
   if (error) {
-    return <p>{error.message}</p>
+    return <Error message={error.message} />
   }
   return (
     <>
