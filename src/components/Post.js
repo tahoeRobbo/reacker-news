@@ -6,12 +6,24 @@ import PostInfo from './PostInfo'
 
 
 const Post = ({ post }) => {
- return (
-  <>
-    <Title url={post.url} title={post.title} />
-    <PostInfo by={post.by} kids={post.kids} time={post.time} score={post.score} />
+  console.log('post inside Post', post)
+  return (
+    <>
+      <Title
+        url={post.url}
+        title={post.title}
+        id={post.id}
+      />
+      <PostInfo
+        by={post.by}
+        descendants={post.descendants}
+        kids={post.kids}
+        id={post.id}
+        time={post.time}
+        score={post.score}
+      />
   </>
- )
+  )
 }
 
 Post.propTypes = {
