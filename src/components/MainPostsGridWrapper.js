@@ -2,30 +2,37 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { fetchInitialPosts } from '../utils/api'
+import {
+  ACTION_TYPE_ERROR,
+  FAILURE,
+  FETCHING_POSTS,
+  SUCCESS_POSTS
+} from '../utils/constants'
 
 import PostsGrid from './PostsGrid'
 import Loading from './Loading'
+import Error from './Error'
 
 function mainPostsReducer (state, action) {
-  if (action.type === 'fetching') {
+  if (action.type === FETCHING_POSTS) {
     return {
       ...state,
       loading: true
     }
-  } else if (action.type === 'success') {
+  } else if (action.type === SUCCESS_POSTS) {
       return {
         posts: action.posts,
         error: null,
         loading: false
       }
-  } else if (action.type === 'failure') {
+  } else if (action.type === FAILURE) {
     return {
       ...state,
       error: action.error,
       loading: false
     }
   } else {
-    throw new Error('That action is not supported')
+    throw new Error(ACTION_TYPE_ERROR)
   }
 }
 
@@ -44,14 +51,14 @@ function MainPostsGridWrapper ({ type }) {
   const { loading, posts, error } = state
 
   React.useEffect(() => {
-    dispatch({ type: 'fetching'})
+    dispatch({ type: FETCHING_POSTS})
 
     fetchInitialPosts(type)
       .then((posts) => (
-        dispatch({ type: 'success', posts})
+        dispatch({ type: SUCCESS_POSTS, posts})
       ))
       .catch((error) => (
-        dispatch({ type: 'failure', error})
+        dispatch({ type: FAILURE, error})
       ))
   }, [type])
 
@@ -60,7 +67,7 @@ function MainPostsGridWrapper ({ type }) {
   }
 
   if (error) {
-    return <p>{error.message}</p>
+    return <Error message={error.message} />
   }
 
   return <PostsGrid posts={posts} />

@@ -2,10 +2,19 @@ import React from 'react'
 import queryString from 'query-string'
 
 import { fetchPosts, fetchComments } from '../utils/api'
+import {
+  ACTION_TYPE_ERROR,
+  FAILURE,
+  FETCHING_COMMENTS,
+  FETCHING_POST,
+  SUCCESS_COMMENTS,
+  SUCCESS_POST
+} from '../utils/constants'
 
 import Comment from './Comment'
 import Post from './Post'
 import Loading from './Loading'
+import Error from './Error'
 
 function getSOCInitialState () {
   return {
@@ -19,31 +28,31 @@ function getSOCInitialState () {
 
 function sOCPostReducer (state, action) {
   const type = action.type
-  if (type === 'fetching_post') {
+  if (type === FETCHING_POST) {
     return {
       ...state,
       loadingPost: true
     }
-  } else if (type === 'success_post') {
+  } else if (type === SUCCESS_POST) {
     return {
       ...state,
       post: action.post,
       loadingPost: false,
       error: null
     }
-  } else if (type === 'fetching_comments') {
+  } else if (type === FETCHING_COMMENTS) {
     return {
       ...state,
       loadingComments: true
     }
-  } else if (type === 'success_comments') {
+  } else if (type === SUCCESS_COMMENTS) {
     return {
       ...state,
       comments: state.comments.concat(action.comments),
       loadingComments: false,
       error: null
     }
-  } else if (type === 'failure') {
+  } else if (type === FAILURE) {
     return {
       ...state,
       error: action.error,
@@ -51,7 +60,7 @@ function sOCPostReducer (state, action) {
       loadingPost: false
     }
   } else {
-    throw new Error('that action is not supported')
+    throw new Error(ACTION_TYPE_ERROR)
   }
 }
 
@@ -65,26 +74,26 @@ function StoryOrCommentPost ({ location }) {
   const { comments, loadingComments, post, loadingPost, error } = state
 
   React.useEffect(() => {
-    dispatch({ type: 'fetching_post' })
-    dispatch({ type: 'fetching_comments' })
+    dispatch({ type: FETCHING_POST })
+    dispatch({ type: FETCHING_COMMENTS })
 
     fetchPosts([id])
       .then(([post]) => {
-        dispatch({ type: 'success_post', post })
+        dispatch({ type: SUCCESS_POST, post })
         fetchComments(post.kids)
           .then((comments) => {
-            dispatch({ type: 'success_comments', comments })
+            dispatch({ type: SUCCESS_COMMENTS, comments })
           })
       })
       .catch((error) => {
-        dispatch({ type: 'failure', error })
+        dispatch({ type: FAILURE, error })
       })
   }, [id])
 
   console.log('post', post)
 
   if (error) {
-    return <p>{error.message}</p>
+    return <Error message={error.message} />
   }
 
   return (
