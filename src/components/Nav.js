@@ -1,19 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const activeStyle = {
-  color: 'baby-blue'
+const styles = {
+  navLink: ['font-bold', 'text-xl'],
+  activeStyle: {
+    color: '#069420'
+  }
 }
 
 export default function Nav () {
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className='flex flex-row justify-between mb-2'>
+      <ul className='flex flex-row'>
+        <li className='mr-4'>
           <NavLink
             to='/'
             exact
-            activeStyle={activeStyle}
+            className={styles.navLink.join(' ')}
+            activeStyle={styles.activeStyle}
           >
             Top
           </NavLink>
@@ -22,7 +26,8 @@ export default function Nav () {
           <NavLink
             to='/new'
             exact
-            activeStyle={activeStyle}
+            className={styles.navLink.join(' ')}
+            activeStyle={styles.activeStyle}
           >
             New
           </NavLink>

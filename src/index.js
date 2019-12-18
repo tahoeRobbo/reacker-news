@@ -7,11 +7,12 @@ import MainPostsGridWrapper from './components/MainPostsGridWrapper'
 import StoryOrCommentPost from './components/StoryOrCommentPost'
 import User from './components/User'
 
+import 'normalize.css'
 import './index.css'
 
 function App () {
   return (
-    <div>
+    <div className='m-10'>
       <Router>
         <Nav />
         <Route exact path='/' render={() => <MainPostsGridWrapper type='top' />} />
