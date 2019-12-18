@@ -63,7 +63,7 @@ function MainPostsGridWrapper ({ type }) {
   }, [type])
 
   if (loading) {
-    return <Loading text='Loading Posts' speed={100}/>
+    return <Loading text='Loading Posts' />
   }
 
   if (error) {

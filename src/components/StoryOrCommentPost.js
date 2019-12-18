@@ -80,6 +80,9 @@ function StoryOrCommentPost ({ location }) {
     fetchPosts([id])
       .then(([post]) => {
         dispatch({ type: SUCCESS_POST, post })
+        if (!post.kids) {
+          return dispatch({ type: SUCCESS_COMMENTS, comments: [] })
+        }
         fetchComments(post.kids)
           .then((comments) => {
             dispatch({ type: SUCCESS_COMMENTS, comments })
@@ -101,16 +104,16 @@ function StoryOrCommentPost ({ location }) {
       {loadingPost
         ? <Loading text='Loading Post' />
         : <>
-            <Post post={post} showText />
-            <p dangerouslySetInnerHTML={{ __html: post.text }} />
+            <Post post={post} />
+            <p className='text-dark-brown' dangerouslySetInnerHTML={{ __html: post.text }} />
           </>}
-      {loadingComments
+      {!loadingPost && loadingComments
         ? <Loading text='Loading Comments' />
-        : comments.length
+        : comments.length > 0
           ? comments.map((comment) => (
             <Comment text={comment.text} time={comment.time} by={comment.by} id={comment.id} key={comment.id} />
           ))
-          : <p>There are no comments for this story. </p>}
+          : <p className='text-dark-brown mt-2 font-bold '>There are no comments for this story. </p>}
     </div>
   )
 }

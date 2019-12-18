@@ -8,7 +8,7 @@ export default function PostsGrid ({ posts }) {
     <>
       <ul>
         {posts.map((post) => (
-          <li key={post.id}>
+          <li className='mb-1' key={post.id}>
             <Post post={post} />
           </li>
         ))}

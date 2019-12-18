@@ -4,15 +4,14 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const Title = ({ title, url, id }) => {
- return (
-  <>
-    { url
-      ? <a href={url}>{title}</a>
-      : <Link to={`/post?id=${id}`} >XXXXXXXXXXX{title}</Link>
-    }
-
-  </>
- )
+  return (
+    <span className='font-bold text-dark-brown'>
+      {url
+        ? <a href={url}>{title}</a>
+        : <Link to={`/post?id=${id}`}>{title}</Link>
+      }
+    </span>
+  )
 }
 
 Title.propTypes = {
