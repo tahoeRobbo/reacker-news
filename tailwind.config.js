@@ -2,7 +2,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bamboo: '#acb832',
+        'bamboo-200': 'rgba(172,184,50, 0.2)',
         peach: '#f7cc92',
         'peach-200': 'rgba(247, 204, 146, 0.2)',
         'light-brown': '#af6548',

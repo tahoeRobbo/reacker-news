@@ -7,20 +7,31 @@ import MainPostsGridWrapper from './components/MainPostsGridWrapper'
 import StoryOrCommentPost from './components/StoryOrCommentPost'
 import User from './components/User'
 
+import { ThemeProvider } from './contexts/Theme'
+
+import { styles } from './utils/constants'
 import 'normalize.css'
 import './index.css'
 
 function App () {
+  const [theme, setTheme] = React.useState('bamboo')
+  const changeTheme = (newTheme) => setTheme(newTheme)
+  console.log('theme', theme)
+
   return (
-    <div className='mx-24 my-10'>
-      <Router>
-        <Nav />
-        <Route exact path='/' render={() => <MainPostsGridWrapper type='top' />} />
-        <Route exact path='/new' render={() => <MainPostsGridWrapper type='new' />} />
-        <Route path='/user' component={User} />
-        <Route path='/post' component={StoryOrCommentPost} />
-      </Router>
-    </div>
+    <Router>
+      <ThemeProvider value={theme}>
+        <div className={`${styles[theme].background} min-h-full`}>
+          <div className='px-24 py-10'>
+            <Nav changeTheme={changeTheme} />
+            <Route exact path='/' render={() => <MainPostsGridWrapper type='top' />} />
+            <Route exact path='/new' render={() => <MainPostsGridWrapper type='new' />} />
+            <Route path='/user' component={User} />
+            <Route path='/post' component={StoryOrCommentPost} />
+          </div>
+        </div>
+      </ThemeProvider>
+    </Router>
   )
 }
 
