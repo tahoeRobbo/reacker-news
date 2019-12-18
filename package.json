@@ -28,12 +28,14 @@
   },
   "homepage": "https://github.com/tahoeRobbo/reacker-news#readme",
   "dependencies": {
+    "autoprefixer": "^9.7.3",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "tailwindcss": "^1.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -43,6 +45,8 @@
     "css-loader": "^3.2.1",
     "html-webpack-plugin": "^3.2.0",
     "moment-locales-webpack-plugin": "^1.1.2",
+    "postcss": "^7.0.25",
+    "postcss-loader": "^3.0.0",
     "standard": "^14.3.1",
     "style-loader": "^1.0.1",
     "webpack": "^4.41.2",
