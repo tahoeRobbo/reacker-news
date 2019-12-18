@@ -28,7 +28,7 @@ export default function Loading ({ text = 'Loading', speed = 300}) {
   }, [text, speed])
 
   return (
-    <p style={styles.content}>
+    <p className='text-dark-brown' style={styles.content}>
       {content}
     </p>
   )

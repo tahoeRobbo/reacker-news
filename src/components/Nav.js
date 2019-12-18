@@ -2,10 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const styles = {
-  navLink: ['font-bold', 'text-xl'],
-  activeStyle: {
-    color: '#069420'
-  }
+  navLink: ['font-bold', 'text-xl', 'text-dark-brown'],
+  activeStyle: '#8c3019'
 }
 
 export default function Nav () {
@@ -17,7 +15,7 @@ export default function Nav () {
             to='/'
             exact
             className={styles.navLink.join(' ')}
-            activeStyle={styles.activeStyle}
+            activeStyle={{color: styles.activeStyle}}
           >
             Top
           </NavLink>
@@ -27,7 +25,7 @@ export default function Nav () {
             to='/new'
             exact
             className={styles.navLink.join(' ')}
-            activeStyle={styles.activeStyle}
+            activeStyle={{color: styles.activeStyle}}
           >
             New
           </NavLink>

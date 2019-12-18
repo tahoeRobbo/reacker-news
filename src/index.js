@@ -12,7 +12,7 @@ import './index.css'
 
 function App () {
   return (
-    <div className='m-10'>
+    <div className='mx-24 my-10'>
       <Router>
         <Nav />
         <Route exact path='/' render={() => <MainPostsGridWrapper type='top' />} />

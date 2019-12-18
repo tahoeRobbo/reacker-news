@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 import { formatDateTimeFrom } from '../utils/helpers'
 
 const styles = {
-  link: ['underline', 'font-black']
+  link: ['underline', 'text-dark-brown']
 }
 
 const PostInfo = ({ by, descendants = 0, id, score = 0, time }) => {
   return (
-    <div className='text-sm text-gray-800'>
+    <div className='text-sm text-light-brown '>
       <span>{score} points </span>
       <span>by <Link className={styles.link.join(' ')} to={`/user?id=${by}`}>{by}</Link></span>
       <span> {formatDateTimeFrom(time)} with <Link className={styles.link.join(' ')} to={`/post?id=${id}`}>{descendants}</Link> comments</span>

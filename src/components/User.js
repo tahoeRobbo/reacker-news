@@ -98,9 +98,9 @@ function User ({ location }) {
       {loadingUser
         ? <Loading text='Loading User' />
         : <div className='mb-2'>
-            <div className='font-bold text-4xl'>{user.id}</div>
-            <div className='text-gray-800'>
-              <span>Joined <b>{formatDateTimeMMDDYY(user.created)}</b>, </span>
+            <div className='font-bold text-dark-brown text-5xl'>{user.id}</div>
+            <div className='text-light-brown'>
+              <span>Joined <b>{formatDateTimeMMDDYY(user.created)}</b> </span>
               <span>has <b>{user.karma}</b> karma</span>
             </div>
             <p dangerouslySetInnerHTML={{__html: user.about}} />
@@ -110,7 +110,7 @@ function User ({ location }) {
         : posts.length === 0
           ? <p>This user has not made any recent posts.</p>
           : <>
-              <h2 className='text-xl font-bold mb-2'>Most Recent Posts</h2>
+              <h2 className='text-2xl font-bold mb-2 text-dark-brown'>Most Recent Posts</h2>
               <PostsGrid posts={posts} />
             </>}
     </>
