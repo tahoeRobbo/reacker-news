@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Title from './Title'
 import PostInfo from './PostInfo'
 
-
 const Post = ({ post }) => {
   console.log('post inside Post', post)
   return (
@@ -17,7 +16,6 @@ const Post = ({ post }) => {
       <PostInfo
         by={post.by}
         descendants={post.descendants}
-        kids={post.kids}
         id={post.id}
         time={post.time}
         score={post.score}
