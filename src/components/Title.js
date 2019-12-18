@@ -8,7 +8,7 @@ const Title = ({ title, url, id }) => {
     <span className='font-bold text-dark-brown'>
       {url
         ? <a href={url}>{title}</a>
-        : <Link to={`/post?id=${id}`} >{title}</Link>
+        : <Link to={`/post?id=${id}`}>{title}</Link>
       }
     </span>
   )
