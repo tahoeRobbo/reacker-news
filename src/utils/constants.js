@@ -20,3 +20,5 @@ export const styles = {
     background: 'bg-space'
   }
 }
+
+export const themeList = Object.keys(styles)
