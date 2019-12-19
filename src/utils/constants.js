@@ -17,15 +17,15 @@ export const styles = {
     background: 'bg-bamboo-200',
     primary: 'text-dark-brown',
     secondary: 'text-light-brown',
-    selected: 'text-ruddy-brown',
+    selected: '#8c3019', // ruddy-brown
     commentBg: 'bg-peach-200'
   },
   neon: {
     background: 'bg-space',
     primary: 'text-teal',
     secondary: 'text-neon-pink',
-    selected: 'text-fuschia',
-    commentBg: 'bg-dandelion-200'
+    selected: '#cf0060', // fuschia
+    commentBg: 'bg-dandelion-100'
   }
 }
 

@@ -1,8 +1,10 @@
 import React from 'react'
 
-import { themeList } from '../utils/constants'
+import { styles, themeList } from '../utils/constants'
+import ThemeContext from '../contexts/Theme'
 
 function ThemeMenu ({ changeTheme }) {
+  const theme = React.useContext(ThemeContext)
   const [openMenu, setOpenMenu] = React.useState(false)
   const handleThemeSelect = (theme) => {
     changeTheme(theme)
@@ -10,14 +12,14 @@ function ThemeMenu ({ changeTheme }) {
   }
 
   return (
-    <div className='relative pl-16' >
+    <div className={`${styles[theme].primary} relative pl-16`}>
       <button onClick={() => setOpenMenu((current) => !current)}>Themes</button>
       {openMenu &&
-        <ul className='absolute right-0 bg-gray-600 w-full'>
-          {themeList.map((theme) => (
-            <li key={theme} onClick={() => handleThemeSelect(theme)}>{theme}</li>
-          ))}
-        </ul>}
+      <ul className={`${styles[theme].commentBg} absolute right-0 w-full p-1 rounded-lg`}>
+        {themeList.map((theme) => (
+          <li className={`${styles[theme].secondary}`} key={theme} onClick={() => handleThemeSelect(theme)}>{theme}</li>
+        ))}
+      </ul>}
     </div>
   )
 }

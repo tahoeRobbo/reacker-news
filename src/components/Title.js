@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { styles } from '../utils/constants'
+
 import { Link } from 'react-router-dom'
+import ThemeContext from '../contexts/Theme'
 
 const Title = ({ title, url, id }) => {
+  const theme  = React.useContext(ThemeContext)
   return (
-    <span className='font-bold text-dark-brown'>
+    <span className={`${styles[theme].primary} font-bold`}>
       {url
         ? <a href={url}>{title}</a>
         : <Link to={`/post?id=${id}`}>{title}</Link>

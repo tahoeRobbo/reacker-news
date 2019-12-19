@@ -18,7 +18,9 @@ module.exports = {
         'neon-pink': '#ff00ff',
         fuschia: '#cf0060',
         dandelion: {
-          200: 'rgba(255, 163, 0, 0.2)'
+          100: 'rgba(255, 163, 0, 0.1)',
+          200: 'rgba(255, 163, 0, 0.2)',
+          900: 'rgba(255, 163, 0, 1)'
         }
       }
     }

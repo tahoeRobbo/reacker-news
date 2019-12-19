@@ -12,10 +12,12 @@ import {
   SUCCESS_POSTS,
   SUCCESS_USER
 } from '../utils/constants'
+import { styles } from '../utils/constants'
 
 import Loading from './Loading'
 import PostsGrid from './PostsGrid'
 import Error from './Error'
+import ThemeContext from '../contexts/Theme'
 
 function getInitialState () {
   return {
@@ -65,6 +67,7 @@ function userReducer (state, action) {
 
 function User ({ location }) {
   const { id } = queryString.parse(location.search)
+  const theme = React.useContext(ThemeContext)
   const [state, dispatch] = React.useReducer(
     userReducer,
     getInitialState()
@@ -98,8 +101,8 @@ function User ({ location }) {
       {loadingUser
         ? <Loading text='Loading User' />
         : <div className='mb-2'>
-            <div className='font-bold text-dark-brown text-5xl'>{user.id}</div>
-            <div className='text-light-brown'>
+            <div className={`${styles[theme].primary} font-bold text-5xl`}>{user.id}</div>
+            <div className={`${styles[theme].secondary}`}>
               <span>Joined <b>{formatDateTimeMMDDYY(user.created)}</b> </span>
               <span>has <b>{user.karma}</b> karma</span>
             </div>
@@ -110,7 +113,7 @@ function User ({ location }) {
         : posts.length === 0
           ? <p>This user has not made any recent posts.</p>
           : <>
-              <h2 className='text-2xl font-bold mb-2 text-dark-brown'>Most Recent Posts</h2>
+              <h2 className={`${styles[theme].primary} text-2xl font-bold mb-2`}>Most Recent Posts</h2>
               <PostsGrid posts={posts} />
             </>}
     </>
