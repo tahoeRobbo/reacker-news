@@ -14,10 +14,18 @@ export const SUCCESS_USER = 'SUCCESS_USER'
 // Theme Colors
 export const styles = {
   bamboo: {
-    background: 'bg-bamboo-200'
+    background: 'bg-bamboo-200',
+    primary: 'text-dark-brown',
+    secondary: 'text-light-brown',
+    selected: 'text-ruddy-brown',
+    commentBg: 'bg-peach-200'
   },
   neon: {
-    background: 'bg-space'
+    background: 'bg-space',
+    primary: 'text-teal',
+    secondary: 'text-neon-pink',
+    selected: 'text-fuschia',
+    commentBg: 'bg-dandelion-200'
   }
 }
 
