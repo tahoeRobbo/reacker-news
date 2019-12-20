@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { styles } from '../utils/constants'
-
 import { formatDateTimeFrom } from '../utils/helpers'
+
 import ThemeContext from '../contexts/Theme'
 
 const PostInfo = ({ by, descendants = 0, id, score = 0, time }) => {

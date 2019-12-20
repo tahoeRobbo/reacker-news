@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { styles } from '../utils/constants'
-import { formatDateTimeFrom } from '../utils/helpers'
 import { Link } from 'react-router-dom'
+
+import { formatDateTimeFrom } from '../utils/helpers'
+import { styles } from '../utils/constants'
+
 import ThemeContext from '../contexts/Theme'
 
 function Comment ({ by, time, text }) {

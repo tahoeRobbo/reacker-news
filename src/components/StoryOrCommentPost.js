@@ -93,8 +93,6 @@ function StoryOrCommentPost ({ location }) {
       })
   }, [id])
 
-  console.log('post', post)
-
   if (error) {
     return <Error message={error.message} />
   }

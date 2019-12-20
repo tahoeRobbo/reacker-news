@@ -5,7 +5,6 @@ import Title from './Title'
 import PostInfo from './PostInfo'
 
 const Post = ({ post }) => {
-  console.log('post inside Post', post)
   return (
     <>
       <Title
@@ -20,7 +19,7 @@ const Post = ({ post }) => {
         time={post.time}
         score={post.score}
       />
-  </>
+    </>
   )
 }
 

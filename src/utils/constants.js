@@ -29,4 +29,5 @@ export const styles = {
   }
 }
 
+// for ThemeMenu
 export const themeList = Object.keys(styles)

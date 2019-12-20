@@ -2,21 +2,21 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+import { styles } from './utils/constants'
+
+import { ThemeProvider } from './contexts/Theme'
+
+import 'normalize.css'
+import './index.css'
+
 import Nav from './components/Nav'
 import MainPostsGridWrapper from './components/MainPostsGridWrapper'
 import StoryOrCommentPost from './components/StoryOrCommentPost'
 import User from './components/User'
 
-import { ThemeProvider } from './contexts/Theme'
-
-import { styles } from './utils/constants'
-import 'normalize.css'
-import './index.css'
-
 function App () {
   const [theme, setTheme] = React.useState('bamboo')
   const changeTheme = (newTheme) => setTheme(newTheme)
-  console.log('theme', theme)
 
   return (
     <Router>

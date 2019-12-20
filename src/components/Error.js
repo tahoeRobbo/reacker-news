@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 function Error ({ message }) {
   return (
-    <div>
+    <div className='text-2xl text-red-900'>
       {message}
     </div>
   )
