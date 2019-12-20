@@ -20,11 +20,11 @@ function mainPostsReducer (state, action) {
       loading: true
     }
   } else if (action.type === SUCCESS_POSTS) {
-      return {
-        posts: action.posts,
-        error: null,
-        loading: false
-      }
+    return {
+      posts: action.posts,
+      error: null,
+      loading: false
+    }
   } else if (action.type === FAILURE) {
     return {
       ...state,
@@ -51,14 +51,14 @@ function MainPostsGridWrapper ({ type }) {
   const { loading, posts, error } = state
 
   React.useEffect(() => {
-    dispatch({ type: FETCHING_POSTS})
+    dispatch({ type: FETCHING_POSTS })
 
     fetchInitialPosts(type)
       .then((posts) => (
-        dispatch({ type: SUCCESS_POSTS, posts})
+        dispatch({ type: SUCCESS_POSTS, posts })
       ))
       .catch((error) => (
-        dispatch({ type: FAILURE, error})
+        dispatch({ type: FAILURE, error })
       ))
   }, [type])
 

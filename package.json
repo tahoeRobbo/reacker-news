@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/tahoeRobbo/reacker-news#readme",
   "dependencies": {
-    "autoprefixer": "^9.7.3",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",

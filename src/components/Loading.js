@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ThemeContext from '../contexts/Theme'
 import { styles } from '../utils/constants'
+import ThemeContext from '../contexts/Theme'
 
 const loadingStyles = {
   content: {
@@ -15,11 +15,11 @@ const loadingStyles = {
 }
 
 export default function Loading ({ text = 'Loading', speed = 300}) {
-  const [ content, setContent ] = React.useState(text)
+  const [content, setContent] = React.useState(text)
   const theme = React.useContext(ThemeContext)
 
   React.useEffect(() => {
-    let id = window.setInterval(() => {
+    const id = window.setInterval(() => {
       setContent((content) => {
         return content === `${text}...`
           ? text

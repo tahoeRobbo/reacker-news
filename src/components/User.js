@@ -10,16 +10,17 @@ import {
   FETCHING_POSTS,
   FETCHING_USER,
   SUCCESS_POSTS,
-  SUCCESS_USER
+  SUCCESS_USER,
+  styles
 } from '../utils/constants'
-import { styles } from '../utils/constants'
+
+import ThemeContext from '../contexts/Theme'
 
 import Loading from './Loading'
 import PostsGrid from './PostsGrid'
 import Error from './Error'
-import ThemeContext from '../contexts/Theme'
 
-function getInitialState () {
+function getUserInitialState () {
   return {
     loadingPosts: false,
     posts: [],
@@ -70,11 +71,9 @@ function User ({ location }) {
   const theme = React.useContext(ThemeContext)
   const [state, dispatch] = React.useReducer(
     userReducer,
-    getInitialState()
+    getUserInitialState()
   )
   const { posts, loadingPosts, loadingUser, user, error } = state
-
-  console.log(user)
 
   React.useEffect(() => {
     dispatch({ type: FETCHING_USER })
@@ -86,7 +85,7 @@ function User ({ location }) {
         fetchPosts(user.submitted.slice(0, 100))
           .then((posts) => {
             dispatch({ type: SUCCESS_POSTS, posts })
-        })
+          })
       })
       .catch((error) => {
         dispatch({ type: FAILURE, error})

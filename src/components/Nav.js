@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
 import { styles } from '../utils/constants'
-
-import ThemeMenu from './ThemeMenu'
 import ThemeContext from '../contexts/Theme'
 
+import ThemeMenu from './ThemeMenu'
 
 export default function Nav ({ changeTheme }) {
   const theme = React.useContext(ThemeContext)
@@ -27,7 +26,7 @@ export default function Nav ({ changeTheme }) {
             activeStyle={{ color: navStyles.activeStyle }}
           >
             Top
-          < /NavLink>
+          </NavLink>
         </li>
         <li>
           <NavLink
