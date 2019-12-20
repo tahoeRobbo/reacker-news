@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ThemeContext from '../contexts/Theme'
+import { styles } from '../utils/constants'
 
-const styles = {
+const loadingStyles = {
   content: {
     fontSize: '35px',
     position: 'absolute',
@@ -14,6 +16,7 @@ const styles = {
 
 export default function Loading ({ text = 'Loading', speed = 300}) {
   const [ content, setContent ] = React.useState(text)
+  const theme = React.useContext(ThemeContext)
 
   React.useEffect(() => {
     let id = window.setInterval(() => {
@@ -28,7 +31,7 @@ export default function Loading ({ text = 'Loading', speed = 300}) {
   }, [text, speed])
 
   return (
-    <p className='text-dark-brown' style={styles.content}>
+    <p className={`${styles[theme].primary}`} style={loadingStyles.content}>
       {content}
     </p>
   )

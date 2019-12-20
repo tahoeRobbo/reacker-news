@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: rgba(172, 184, 50, 0.33);
+html, body, #app {
+    margin: 0;
+    height: 100%;
+    width: 100%;
 }
