@@ -15,9 +15,9 @@ function ThemeMenu ({ changeTheme }) {
     <div className={`${styles[theme].primary} relative pl-16`}>
       <button onClick={() => setOpenMenu((current) => !current)}>Themes</button>
       {openMenu &&
-      <ul className={`${styles[theme].commentBg} absolute right-0 w-full p-1 rounded-lg`}>
+      <ul className={`${styles[theme].commentBg} absolute right-0 p-2 rounded-lg`}>
         {themeList.map((theme) => (
-          <li className={`${styles[theme].secondary}`} key={theme} onClick={() => handleThemeSelect(theme)}>{theme}</li>
+          <li className={`${styles[theme].secondary} text-right`} key={theme} onClick={() => handleThemeSelect(theme)}>{theme}</li>
         ))}
       </ul>}
     </div>
