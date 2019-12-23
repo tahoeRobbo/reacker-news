@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/tahoeRobbo/reacker-news#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
